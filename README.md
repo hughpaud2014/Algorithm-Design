@@ -28,7 +28,7 @@ This repository is part of my "Algorithmic Project a Day" initiative, where I ai
 
 1. **Clone the Repository**: Clone this repository to your local machine using the following command:
    ```bash
-   git clone https://github.com/hughpaud2014/java-learning-and-demos.git
+   git clone https://github.com/hughpaud2014/Algorithm-Design.git
    ```
 2. **Explore the Projects**: Navigate through the different folders to explore the daily projects. Each folder contains the Java code and documentation for that day's project.
 3. **Run the Code**: Open the Java files in your favorite IDE (e.g., IntelliJ IDEA, Eclipse) and run the code to see the algorithms in action.
