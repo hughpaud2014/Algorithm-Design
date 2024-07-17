@@ -9,12 +9,25 @@
 
 public class InsertionSort {
 
+    // The swap function is used to interchange the positions of two elements in the
+    // array.
+    // It takes three parameters: the array 's', and the indices 'i' and 'j' of the
+    // elements to be swapped.
+    // The function uses a temporary variable 'temp' to store the value of the
+    // element at index 'i' before swapping.
+    // It then assigns the value of the element at index 'j' to the element at index
+    // 'i', and finally assigns the value of 'temp' to the element at index 'j'.
+    // This effectively swaps the positions of the two elements in the array.
+    // The swap function is called within the insertionSort function to perform the
+    // necessary swaps during the sorting process.
     // Function to swap two elements in an array
+
     static void swap(char[] s, int i, int j) { 
         char temp = s[i];
         s[i] = s[j];
         s[j] = temp;
     } // End of swap function
+
 
     public static void insertionSort(char[] s, int n) {
         int i, j;
