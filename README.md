@@ -8,7 +8,7 @@ This repository is dedicated to my journey of learning and demonstrating Java pr
 
 ## About Me
 
-I am currently an Independent Contractor for Hughes Xploration Holdings, LLC, a small business I formulated due to an increase in requests for my services as a technical advisor and engineer. I have been in the oil and gas industry for 24 years. I started my career in this industry as an equipment manager until discovering my technical aptitude, which paved the way for my career as an engineer and account manager.
+I am currently an Independent Contractor for Hughes Xploration Holdings, LLC, a small business I formulated due to an increase in requests for my services as a technical advisor and engineer. I have been in the oil and gas industry for 24 years. I started my career in this industry as an equipment operator until discovering my technical aptitude, which paved the way for my career as an engineer and account manager.
 
 As a child, I was known to dismantle electronics and read technical instructions to reconstruct the electronics I took apart. My late father discovered this and introduced me to my first computer, the Radio Shack TRS-80 Color Computer 2; this also introduced me to the Microsoft BASIC programming language.
 
