@@ -75,6 +75,9 @@ def get_tracked_files(root: Path) -> List[Path]:
         text_files = []
         for f in files:
             if f.is_file() and is_text_file(f):
+                # Skip guardrails config files (they contain the denylist by design)
+                if f.name in ["config.json", "config.local.json"] and ".guardrails" in str(f.parent):
+                    continue
                 text_files.append(f)
         
         return text_files
