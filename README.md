@@ -204,8 +204,7 @@ See `CONTRIBUTING.md` (TBD) for full guidelines.
 
 ## License
 
-Apache License 2.0  
-Copyright 2026 Substrata Platform Contributors
+Apache License 2.0
 
 See [LICENSE](./LICENSE) and [NOTICE](./NOTICE) for full terms.
 

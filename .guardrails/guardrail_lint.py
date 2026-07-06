@@ -19,16 +19,42 @@ from typing import List, Set, Tuple
 
 
 def load_config(config_path: Path) -> dict:
-    """Load guardrail configuration."""
+    """Load guardrail configuration, merging base + local overrides."""
     try:
         with open(config_path, "r", encoding="utf-8") as f:
-            return json.load(f)
+            config = json.load(f)
     except FileNotFoundError:
         print(f"ERROR: Config file not found: {config_path}", file=sys.stderr)
         sys.exit(1)
     except json.JSONDecodeError as e:
         print(f"ERROR: Invalid JSON in config: {e}", file=sys.stderr)
         sys.exit(1)
+    
+    # Check for local override file
+    local_config_path = config_path.parent / "config.local.json"
+    if local_config_path.exists():
+        try:
+            with open(local_config_path, "r", encoding="utf-8") as f:
+                local_config = json.load(f)
+            
+            # Merge configs: local overrides take precedence
+            # For denylist and allowed_standards, extend the lists
+            if "denylist" in local_config:
+                config["denylist"] = list(set(config.get("denylist", []) + local_config["denylist"]))
+            if "allowed_standards" in local_config:
+                config["allowed_standards"] = list(set(config.get("allowed_standards", []) + local_config["allowed_standards"]))
+            
+            # For other fields, local completely overrides
+            for key in ["allowed_files", "owner_name", "owner_allowed_files"]:
+                if key in local_config:
+                    config[key] = local_config[key]
+            
+            print(f"INFO: Merged config.local.json overrides", file=sys.stderr)
+        
+        except json.JSONDecodeError as e:
+            print(f"WARNING: Invalid JSON in config.local.json, ignoring: {e}", file=sys.stderr)
+    
+    return config
 
 
 def get_tracked_files(root: Path) -> List[Path]:

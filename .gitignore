@@ -1,5 +1,6 @@
-# Guardrails config (contains org-specific denylist)
-.guardrails/config.json
+# Guardrails local overrides (org-specific customization)
+.guardrails/config.local.json
+.guardrails/*.local.json
 
 # Python
 __pycache__/

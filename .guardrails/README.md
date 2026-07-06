@@ -22,12 +22,15 @@ The primary enforcement script that:
 
 ### `config.json`
 
-Configuration file containing:
-- `denylist`: Array of forbidden third-party company/vendor names
+Base configuration file containing:
+- `denylist`: Array of forbidden third-party company/vendor names (examples for demonstration)
 - `allowed_files`: Files exempted from the denylist (LICENSE, NOTICE)
 - `allowed_standards`: Open standards that can be referenced (e.g., "WITSML", "LAS")
+- `owner_name`: IP owner name (used to enforce LICENSE/NOTICE-only restriction)
 
-**IMPORTANT**: `config.json` is git-ignored and must never be committed. Each environment maintains its own denylist.
+**Base configuration**: `config.json` is committed with example entries for CI and default behavior.
+
+**Local customization**: Create `config.local.json` (git-ignored) to add organization-specific forbidden names. The linter will merge both configs, with local overrides taking precedence.
 
 ## Usage
 
@@ -43,14 +46,16 @@ The script must exit with status 0 before any phase is considered complete.
 
 This check runs automatically in CI and will fail the build if violations are detected. Do not weaken the guardrails to make a change pass - fix the violation instead.
 
-## Adding to the Denylist
+## Customizing the Denylist
 
-To add a forbidden name to the denylist:
+To add organization-specific forbidden names:
 
-1. Edit `.guardrails/config.json` (git-ignored)
-2. Add the name to the `denylist` array
+1. Copy `config.json` to `config.local.json`
+2. Edit `config.local.json` (git-ignored) to add forbidden names to `denylist`
 3. Run `guardrail_lint.py` to verify existing code
-4. The change stays local - never commit `config.json`
+4. Local changes stay private - `config.local.json` is never committed
+
+The linter will use `config.json` (base) merged with `config.local.json` (if present).
 
 ## Philosophy
 
