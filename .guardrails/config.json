@@ -1,0 +1,24 @@
+{
+  "denylist": [
+    "ExampleVendorCo",
+    "SampleServiceProvider",
+    "TestOperatorInc"
+  ],
+  "allowed_files": [
+    "LICENSE",
+    "NOTICE"
+  ],
+  "allowed_standards": [
+    "WITSML",
+    "LAS",
+    "DLIS",
+    "PPDM",
+    "OSDU",
+    "Energistics"
+  ],
+  "owner_name": "Substrata Platform Contributors",
+  "owner_allowed_files": [
+    "LICENSE",
+    "NOTICE"
+  ]
+}

@@ -1,0 +1,65 @@
+name: Substrata CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  guardrails:
+    name: Guardrail Checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: Run guardrail lint
+        run: python3 .guardrails/guardrail_lint.py
+  
+  # Phase 0: Backend linting/typing disabled until tooling ADR resolved
+  # Phase 1+: Uncomment and configure
+  # backend-quality:
+  #   name: Backend Code Quality
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     
+  #     - name: Set up Python
+  #       uses: actions/setup-python@v5
+  #       with:
+  #         python-version: '3.12'
+  #     
+  #     - name: Install dependencies
+  #       run: |
+  #         # TBD: Install with uv or poetry (ADR required)
+  #         pip install ruff mypy
+  #     
+  #     - name: Lint with ruff
+  #       run: ruff check backend/
+  #     
+  #     - name: Type check with mypy
+  #       run: mypy --strict backend/
+  
+  # backend-tests:
+  #   name: Backend Tests
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     
+  #     - name: Set up Python
+  #       uses: actions/setup-python@v5
+  #       with:
+  #         python-version: '3.12'
+  #     
+  #     - name: Install dependencies
+  #       run: |
+  #         # TBD: Install with uv or poetry (ADR required)
+  #         pip install pytest fastapi httpx
+  #     
+  #     - name: Run tests
+  #       run: pytest backend/tests/
